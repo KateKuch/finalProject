@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Word Statistics on Wikipedia</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Статистика слов на странице в Википедии</h1>
+        <form action="/results" method="post">
+            <label for="page_name">Введите название страницы:</label>
+            <input type="text" id="page_name" name="page_name" required>
+            <button type="submit">Анализировать</button>
+        </form>
+    </div>
+    <footer>
+        <a href="/about">О проекте</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Word Statistics Results</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Статистика слов для "{{ page_name }}"</h1>
+        {% if word_statistics %}
+            <b>Всего слов: {{ word_statistics['total_words'] }}</b>
+            <div>
+                <ul>
+                    <li>Среднее количество слов на абзац: {{ word_statistics['avg_words_per_paragraph'] }}</li>
+                    <li>Среднее количество слов на раздел: {{ word_statistics['avg_words_per_section'] }}</li>
+                    <li>Минимальное количество слов в разделах: {{ word_statistics['min_words_section'] }}</li>
+                    <li>Максимальное количество слов в разделах: {{ word_statistics['max_words_section'] }}</li>
+                    <li>Минимальное количество слов в абзацах: {{ word_statistics['min_words_paragraph'] }}</li>
+                    <li>Максимальное количество слов в абзацах: {{ word_statistics['max_words_paragraph'] }}</li>
+                </ul>
+            </div>
+            <h2>Среднее количество слов в разделах: {{ average_section }}</h2>
+            <img src="{{ section_chart }}" alt="Word Count in Sections" style="max-width: 100%; height: auto;">
+
+            <h2>Среднее количество слов в абзацах: {{ average_paragraph }}</h2>
+            <img src="{{ paragraph_chart }}" alt="Word Count in Paragraphs" style="max-width: 100%; height: auto;">
+
+        {% endif %}
+
+        {% if error_message %}
+            <p>Ошибка: {{ error_message }}</p>
+        {% endif %}
+
+        <a href="/">Вернуться на главную</a>
+
+    </div>
+    <footer>
+        <a href="/about">О проекте</a>
+    </footer>
+</body>
+</html>
+
